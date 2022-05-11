@@ -20,5 +20,5 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Back-en
+Em [Gerenciador de Usuários](https://github.com/arthurpiratas/gerenciadorUsuarios/).
