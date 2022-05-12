@@ -5,11 +5,9 @@
 
     <div class="columns is-centered">
       <div class="column is-half">
-        <div v-if="error.length > 0">
-          <div class="notification is-danger">
-            <div v-for="(erro, index) in error" :key="index">
-              {{erro}}
-            </div>  
+        <div v-if="error != undefined">
+          <div class="notification is-danger">          
+              {{error}}
           </div> 
         </div>
         <p>E-mail</p>
@@ -30,13 +28,13 @@
 </template>
 
 <script>
- 
+import axios from 'axios'
 export default {
     data(){
         return{
             password: '', 
             email: '', 
-            error : [],
+            error : undefined,
             sucess: undefined
         }
     },methods:{
@@ -44,10 +42,17 @@ export default {
           this.$router.push({name: 'home'})
         },
         login(){
-            this.error = []
+            this.error  = undefined
             this.sucess = undefined
-
-            console.log("login")
+            axios.post("http://127.0.0.1:8686/login",{password: this.password, email: this.email}).then(res => {
+                this.sucess = "Login realizado com sucesso"
+                localStorage.setItem('token', res.data.token)
+            }).catch(err => {
+              var msgErro = err.response.data.messsage
+              this.error = msgErro
+              
+                
+            })
             
         }
     }
