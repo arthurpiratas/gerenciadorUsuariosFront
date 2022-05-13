@@ -47,6 +47,7 @@ export default {
             axios.post("http://127.0.0.1:8686/login",{password: this.password, email: this.email}).then(res => {
                 this.sucess = "Login realizado com sucesso"
                 localStorage.setItem('token', res.data.token)
+                this.$router.push({name: 'Users'})
             }).catch(err => {
               var msgErro = err.response.data.messsage
               this.error = msgErro
