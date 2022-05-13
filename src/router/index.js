@@ -40,7 +40,8 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    beforeEnter: AdminAuth
   },
   {
     path: '/usernotaut',
