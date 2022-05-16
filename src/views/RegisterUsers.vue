@@ -49,10 +49,17 @@ export default {
           this.$router.push({name: 'home'})
         },
         register(){
+            var req = {
+              headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+         },
+    
+         };
+
             this.error = []
             this.sucess = undefined
 
-            axios.post("http://127.0.0.1:8686/user",{name: this.name, password: this.password, email: this.email, role: this.role}).then(res => {
+            axios.post("http://127.0.0.1:8686/user",{name: this.name, password: this.password, email: this.email, role: this.role}, req).then(res => {
                 this.name = '',
                 this.password = '', 
                 this.email = ''
