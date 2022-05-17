@@ -78,15 +78,12 @@ export default {
             this.error = []
             this.sucess = undefined
 
-            axios.post("http://127.0.0.1:8686/user",{name: this.name, email: this.email, role: this.role}, req).then(res => {
-                this.name = '',
-                this.email = ''
+            axios.put("http://127.0.0.1:8686/user",{id: this.id,name: this.name, email: this.email, role: this.role}, req).then(res => {
                 this.sucess = res.data
             }).catch(err => {
               var msgErro = err.response.data
               msgErro.forEach(msg => {
                 this.error.push(msg.err)
-                console.log(msg.err)
               });
                 
             })
