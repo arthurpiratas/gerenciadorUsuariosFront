@@ -25,8 +25,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.role > 0 ? "Administrador" : "Funcionário" }}</td>
                 <td>
-                  <button id="botoes" class="button is-success">Editar</button
-                  ><button class="button is-danger"  @click="showModals(user.id)">Deletar</button>
+                  <router-link :to="{name: 'Edit', params: {id: user.id}}"><button id="botoes" class="button is-success">Editar</button></router-link><button class="button is-danger"  @click="showModals(user.id)">Deletar</button>
                 </td>
               </tr>
             </tbody>
