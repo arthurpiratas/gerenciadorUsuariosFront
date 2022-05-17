@@ -5,6 +5,9 @@
         <div class="column is-half">
           <h2 class="subtitle is-2">Painel Aministrativo</h2>
           <hr />
+          <button id="botoes" class="button is-success" @click="newUser()">Criar usuário</button>
+          <button id="botoes" class="button is-danger" @click="logout()">Sair</button>
+          <hr />
           <table class="table">
             <thead>
               <tr>
@@ -65,6 +68,13 @@ export default {
     };
   },
   methods: {
+    logout(){
+        localStorage.removeItem('token')
+        this.$router.push({name: 'Login'})
+    },
+    newUser(){
+        this.$router.push({name: 'Register'})
+    },
     hideModal(){
       this.deleteUserId = -1
       this.showModal = false

@@ -46,7 +46,7 @@ export default {
         }
     },methods:{
         voltar(){
-          this.$router.push({name: 'home'})
+          this.$router.push({name: 'Users'})
         },
         register(){
             var req = {
